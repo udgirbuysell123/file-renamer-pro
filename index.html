@@ -3,43 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FileRenamer Pro – Advanced Bulk File Renamer Online Free</title>
-<meta name="description" content="FileRenamer Pro: Drag & drop files and rename multiple files at once. Add prefix, suffix, numbering, date/time, replace text, and download instantly as a ZIP. Free online tool.">
-<meta name="keywords" content="bulk file renamer, advanced file renamer, drag and drop file renamer, batch rename files, rename multiple files online, free file renamer, FileRenamer Pro">
+<title>FileRenamer Pro – Free Online Bulk File Renamer</title>
+<meta name="description" content="FileRenamer Pro is a free online bulk file renamer. Drag & drop files, add prefixes, suffixes, numbering, dates, replace text, and download instantly as a ZIP.">
+<meta name="keywords" content="file renamer, bulk rename, online file renamer, rename multiple files, free file renamer, FileRenamer Pro">
 <style>
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333;}
+/* ====== General Styles ====== */
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333; scroll-behavior:smooth; }
 .container { max-width: 900px; margin:40px auto; padding:20px; background:#fff; border-radius:10px; box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:center;}
-h1 { color:#2c3e50; }
-p.description { font-size:1rem; color:#555; margin-bottom:30px; }
-#drop-area { border:2px dashed #2ecc71; padding:40px; border-radius:10px; margin-bottom:20px; background:#f0fff0; transition: background 0.3s ease; cursor:pointer;}
+h1, h2 { color:#2c3e50; margin-bottom:15px; }
+p, li { font-size:1rem; color:#555; line-height:1.5; }
+nav a { margin:0 10px; text-decoration:none; color:#2ecc71; font-weight:bold;}
+nav a:hover { text-decoration:underline; }
+section { margin-bottom:50px; }
+#drop-area { border:2px dashed #2ecc71; padding:40px; border-radius:10px; margin-bottom:20px; background:#f0fff0; cursor:pointer; transition:0.3s; }
 #drop-area.hover { background:#d4f5d4; }
 input[type="text"], input[type="number"], select, button { width:100%; padding:12px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size:1rem; box-sizing:border-box; }
-button { background-color:#2ecc71; color:white; border:none; cursor:pointer; transition: background-color 0.3s ease; }
-button:hover { background-color:#27ae60; }
+button { background-color:#2ecc71; color:white; border:none; cursor:pointer; transition:0.3s;}
+button:hover { background-color:#27ae60;}
+ul { text-align:left; padding-left:20px; max-height:200px; overflow:auto;}
 .ad-placeholder { text-align:center; margin:30px 0; background:#f0f0f0; padding:15px; border-radius:6px; font-weight:bold; color:#555; }
-footer { text-align:center; margin-top:40px; color:#888; font-size:0.9rem; }
-ul#file-list { list-style:none; padding:0; color:#333; max-height:200px; overflow:auto; margin-bottom:10px; }
-ul#file-list li { padding:4px 0; border-bottom:1px solid #eee; }
-@media (max-width:500px){.container{margin:20px;padding:15px;}}
-
-/* Modal styles */
+footer { text-align:center; margin-top:40px; color:#888; font-size:0.9rem;}
 .modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.6);}
 .modal-content { background:#fff; margin:15% auto; padding:20px; border-radius:10px; width:90%; max-width:500px; text-align:center; }
-.modal button { margin-top:20px; }
+@media (max-width:500px){.container{margin:20px;padding:15px;}}
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<header class="container">
 <h1>FileRenamer Pro</h1>
-<p class="description">Drag & drop files or click to upload. Add prefix, suffix, numbering, date/time, replace text, and download as a ZIP instantly!</p>
+<p>Rename multiple files instantly online. Drag & drop, customize names, and download as ZIP. No installation needed.</p>
+<nav>
+  <a href="#tool">Tool</a> |
+  <a href="#features">Features</a> |
+  <a href="#faq">FAQ</a> |
+  <a href="#about">About</a> |
+  <a href="#contact">Contact</a>
+</nav>
+</header>
 
+<main class="container">
+<!-- ====== Tool Section ====== -->
+<section id="tool">
+<h2>Rename Your Files</h2>
+<p>Drag & drop your files below or click to upload, then set your renaming options and download as a ZIP.</p>
 <div id="drop-area">
 Drag & Drop Files Here or Click to Upload
 <input type="file" id="files" multiple style="display:none;">
 </div>
-
 <ul id="file-list"></ul>
 
 <input type="text" id="prefix" placeholder="Prefix (optional)">
@@ -59,31 +70,72 @@ Drag & Drop Files Here or Click to Upload
 </select>
 
 <button onclick="showDownloadPopup()">Rename & Download</button>
+<div class="ad-placeholder">Ad / Donation Placeholder</div>
+</section>
 
-<div class="ad-placeholder">Ad Space / Monetization Here</div>
-<footer>&copy; 2025 FileRenamer Pro. Free online tool for renaming files in bulk.</footer>
-</div>
+<!-- ====== Features Section ====== -->
+<section id="features">
+<h2>Features</h2>
+<ul>
+  <li>Batch rename multiple files in seconds</li>
+  <li>Add prefixes, suffixes, numbering, and dates</li>
+  <li>Replace text within filenames</li>
+  <li>Preview renamed files before downloading</li>
+  <li>Download all files instantly as a ZIP</li>
+  <li>Files are processed locally in your browser – private & secure</li>
+</ul>
+</section>
 
-<!-- Modal -->
+<!-- ====== FAQ Section ====== -->
+<section id="faq">
+<h2>FAQ</h2>
+<ul>
+  <li><strong>Are my files uploaded to a server?</strong> No, all processing happens locally in your browser.</li>
+  <li><strong>Is this tool free?</strong> Yes, all basic features are free.</li>
+  <li><strong>How many files can I rename?</strong> Hundreds, depending on your browser memory.</li>
+  <li><strong>Which browsers are supported?</strong> Latest Chrome, Firefox, Edge, Safari.</li>
+</ul>
+</section>
+
+<!-- ====== About Section ====== -->
+<section id="about">
+<h2>About FileRenamer Pro</h2>
+<p>FileRenamer Pro was created to help users rename multiple files quickly, safely, and easily without installing software. All files are processed in-browser for complete privacy.</p>
+</section>
+
+<!-- ====== Contact Section ====== -->
+<section id="contact">
+<h2>Contact</h2>
+<p>Email us at: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+</section>
+
+</main>
+
+<footer>
+&copy; 2025 FileRenamer Pro. Free online bulk file renamer.
+</footer>
+
+<!-- ====== Download Modal ====== -->
 <div id="downloadModal" class="modal">
-  <div class="modal-content">
-    <h2>Your files are ready!</h2>
-    <p>Check out this special offer while your download is prepared:</p>
-    <div style="background:#f0f0f0; padding:15px; border-radius:6px; margin:15px 0;">
-      <strong>Ad / Promotion Here</strong><br>
-      Example: Get 50% off File Storage Service!
-    </div>
-    <button onclick="startDownload()">Continue to Download</button>
-  </div>
+<div class="modal-content">
+<h2>Your files are ready!</h2>
+<p>Consider supporting us while your download is prepared:</p>
+<div style="background:#f0f0f0; padding:15px; border-radius:6px; margin:15px 0;">
+<strong>Ad / Donation Here</strong>
+</div>
+<button onclick="startDownload()">Continue to Download</button>
+</div>
 </div>
 
+<!-- ====== JS ====== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>
+// ====== File renaming logic ======
 let selectedFiles = [];
+let zipContent = null;
 const dropArea = document.getElementById('drop-area');
 const fileInput = document.getElementById('files');
 const fileList = document.getElementById('file-list');
-let zipContent = null; // store zip blob temporarily
 
 dropArea.addEventListener('click', () => fileInput.click());
 dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('hover'); });
@@ -112,7 +164,6 @@ function formatDate(format){
   return "";
 }
 
-// Show popup modal
 function showDownloadPopup(){
   if(!selectedFiles.length) return alert("Please select files!");
   generateZip().then(() => {
@@ -120,7 +171,6 @@ function showDownloadPopup(){
   });
 }
 
-// Generate ZIP in background
 async function generateZip(){
   const prefix = document.getElementById('prefix').value;
   const suffix = document.getElementById('suffix').value;
@@ -129,8 +179,8 @@ async function generateZip(){
   let number = parseInt(document.getElementById('numbering-start').value);
   const padding = parseInt(document.getElementById('numbering-padding').value);
   const dateStr = formatDate(document.getElementById('date-format').value);
-
   const zip = new JSZip();
+
   for(let file of selectedFiles){
     let ext = file.name.split('.').pop();
     let name = file.name.slice(0, -(ext.length+1));
@@ -140,11 +190,9 @@ async function generateZip(){
     zip.file(newName, file);
     number++;
   }
-
   zipContent = await zip.generateAsync({ type:"blob" });
 }
 
-// Start download after popup
 function startDownload(){
   const a = document.createElement("a");
   a.href = URL.createObjectURL(zipContent);
@@ -156,7 +204,6 @@ function startDownload(){
   document.getElementById('downloadModal').style.display = 'none';
 }
 
-// Close modal if clicked outside
 window.onclick = function(event) {
   const modal = document.getElementById('downloadModal');
   if(event.target == modal) modal.style.display = "none";
