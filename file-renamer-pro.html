@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FileRenamer Pro – Advanced Bulk File Renamer Online Free</title>
+<meta name="description" content="FileRenamer Pro: Drag & drop files and rename multiple files at once. Add prefix, suffix, numbering, date/time, replace text, and download instantly as a ZIP. Free online tool.">
+<meta name="keywords" content="bulk file renamer, advanced file renamer, drag and drop file renamer, batch rename files, rename multiple files online, free file renamer, FileRenamer Pro">
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333;}
+.container { max-width: 900px; margin:40px auto; padding:20px; background:#fff; border-radius:10px; box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:center;}
+h1 { color:#2c3e50; }
+p.description { font-size:1rem; color:#555; margin-bottom:30px; }
+#drop-area { border:2px dashed #2ecc71; padding:40px; border-radius:10px; margin-bottom:20px; background:#f0fff0; transition: background 0.3s ease; cursor:pointer;}
+#drop-area.hover { background:#d4f5d4; }
+input[type="text"], input[type="number"], select, button { width:100%; padding:12px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size:1rem; box-sizing:border-box; }
+button { background-color:#2ecc71; color:white; border:none; cursor:pointer; transition: background-color 0.3s ease; }
+button:hover { background-color:#27ae60; }
+.ad-placeholder { text-align:center; margin:30px 0; background:#f0f0f0; padding:15px; border-radius:6px; font-weight:bold; color:#555; }
+footer { text-align:center; margin-top:40px; color:#888; font-size:0.9rem; }
+ul#file-list { list-style:none; padding:0; color:#333; max-height:200px; overflow:auto; margin-bottom:10px; }
+ul#file-list li { padding:4px 0; border-bottom:1px solid #eee; }
+@media (max-width:500px){.container{margin:20px;padding:15px;}}
+
+/* Modal styles */
+.modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.6);}
+.modal-content { background:#fff; margin:15% auto; padding:20px; border-radius:10px; width:90%; max-width:500px; text-align:center; }
+.modal button { margin-top:20px; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>FileRenamer Pro</h1>
+<p class="description">Drag & drop files or click to upload. Add prefix, suffix, numbering, date/time, replace text, and download as a ZIP instantly!</p>
+
+<div id="drop-area">
+Drag & Drop Files Here or Click to Upload
+<input type="file" id="files" multiple style="display:none;">
+</div>
+
+<ul id="file-list"></ul>
+
+<input type="text" id="prefix" placeholder="Prefix (optional)">
+<input type="text" id="suffix" placeholder="Suffix (optional)">
+<input type="text" id="replace-text" placeholder="Text to replace (optional)">
+<input type="text" id="replace-with" placeholder="Replace with (optional)">
+<label for="numbering-start">Numbering Start:</label>
+<input type="number" id="numbering-start" value="1" min="1">
+<label for="numbering-padding">Number Padding (e.g., 001):</label>
+<input type="number" id="numbering-padding" value="3" min="1">
+<label for="date-format">Add Date:</label>
+<select id="date-format">
+  <option value="">None</option>
+  <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+  <option value="dd-mm-yyyy">DD-MM-YYYY</option>
+  <option value="mm-dd-yyyy">MM-DD-YYYY</option>
+</select>
+
+<button onclick="showDownloadPopup()">Rename & Download</button>
+
+<div class="ad-placeholder">Ad Space / Monetization Here</div>
+<footer>&copy; 2025 FileRenamer Pro. Free online tool for renaming files in bulk.</footer>
+</div>
+
+<!-- Modal -->
+<div id="downloadModal" class="modal">
+  <div class="modal-content">
+    <h2>Your files are ready!</h2>
+    <p>Check out this special offer while your download is prepared:</p>
+    <div style="background:#f0f0f0; padding:15px; border-radius:6px; margin:15px 0;">
+      <strong>Ad / Promotion Here</strong><br>
+      Example: Get 50% off File Storage Service!
+    </div>
+    <button onclick="startDownload()">Continue to Download</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+let selectedFiles = [];
+const dropArea = document.getElementById('drop-area');
+const fileInput = document.getElementById('files');
+const fileList = document.getElementById('file-list');
+let zipContent = null; // store zip blob temporarily
+
+dropArea.addEventListener('click', () => fileInput.click());
+dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('hover'); });
+dropArea.addEventListener('dragleave', e => dropArea.classList.remove('hover'));
+dropArea.addEventListener('drop', e => { e.preventDefault(); dropArea.classList.remove('hover'); handleFiles(e.dataTransfer.files); });
+fileInput.addEventListener('change', e => handleFiles(e.target.files));
+
+function handleFiles(files){
+  for(let file of files){
+    selectedFiles.push(file);
+    const li = document.createElement('li');
+    li.textContent = file.name;
+    fileList.appendChild(li);
+  }
+}
+
+function formatDate(format){
+  if(!format) return "";
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth()+1).padStart(2,'0');
+  const dd = String(now.getDate()).padStart(2,'0');
+  if(format==="yyyy-mm-dd") return `${yyyy}-${mm}-${dd}`;
+  if(format==="dd-mm-yyyy") return `${dd}-${mm}-${yyyy}`;
+  if(format==="mm-dd-yyyy") return `${mm}-${dd}-${yyyy}`;
+  return "";
+}
+
+// Show popup modal
+function showDownloadPopup(){
+  if(!selectedFiles.length) return alert("Please select files!");
+  generateZip().then(() => {
+    document.getElementById('downloadModal').style.display = 'block';
+  });
+}
+
+// Generate ZIP in background
+async function generateZip(){
+  const prefix = document.getElementById('prefix').value;
+  const suffix = document.getElementById('suffix').value;
+  const replaceText = document.getElementById('replace-text').value;
+  const replaceWith = document.getElementById('replace-with').value;
+  let number = parseInt(document.getElementById('numbering-start').value);
+  const padding = parseInt(document.getElementById('numbering-padding').value);
+  const dateStr = formatDate(document.getElementById('date-format').value);
+
+  const zip = new JSZip();
+  for(let file of selectedFiles){
+    let ext = file.name.split('.').pop();
+    let name = file.name.slice(0, -(ext.length+1));
+    if(replaceText) name = name.replaceAll(replaceText, replaceWith);
+    let numberStr = String(number).padStart(padding, '0');
+    let newName = `${prefix}${name}${suffix}${dateStr ? '_'+dateStr : ''}${numberStr}.${ext}`;
+    zip.file(newName, file);
+    number++;
+  }
+
+  zipContent = await zip.generateAsync({ type:"blob" });
+}
+
+// Start download after popup
+function startDownload(){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(zipContent);
+  a.download = "renamed_files.zip";
+  a.click();
+  zipContent = null;
+  selectedFiles = [];
+  fileList.innerHTML = "";
+  document.getElementById('downloadModal').style.display = 'none';
+}
+
+// Close modal if clicked outside
+window.onclick = function(event) {
+  const modal = document.getElementById('downloadModal');
+  if(event.target == modal) modal.style.display = "none";
+}
+</script>
+</body>
+</html>
